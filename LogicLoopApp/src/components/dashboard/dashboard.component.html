@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Games Listing</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">VIDEO GAMES</a></li>
+                <li><a routerLink="/contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <section class="dashboard-header">
+            <h1>Video</h1>
+          </section>
+    </header>
+    
+
+    <div class="container">
+        <!-- Filter Section -->
+        <aside class="filter">
+            <h2>Filter Results</h2>
+            <label for="name">Name (contains)</label>
+            <input type="text" id="name" name="name" placeholder="Text string" [(ngModel)]="searchName" (input)="filterByName()">
+
+            <label for="score">Minimum Score</label>
+            <input type="number" id="score" name="score" min="1" max="10" placeholder="1 - 10">
+
+            <label for="order">Order By</label>
+            <select id="order" name="order">
+                <option value="release_date">Release Date</option>
+                <option value="score">Score</option>
+                <option value="name">Name</option>
+            </select>
+
+            <button type="button">Clear</button>
+        </aside>
+
+        <!-- Game Listings Section -->
+        <main class="games-list">
+            <div class="game" *ngFor="let item of filteredData">
+              
+                <div class="game-info">
+                    <h3>{{item?.attributes.name}}</h3>
+                    <p>Release Date:{{item?.attributes.publishedAt | date: 'dd/MM/yyyy'}} </p>
+                    <p>{{item?.attributes.summary}}<p>
+                </div>
+                <div class="game-score">
+                    <span>{{item?.attributes.rating}}</span>
+                </div>
+            </div>
+
+            <!-- <div class="game">
+                <div class="game-info">
+                    <h3>Game Title</h3>
+                    <p>Release Date: DD/MM/YYYY</p>
+                    <p>[Summary] Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div class="game-score">
+                    <span>7</span>
+                </div>
+            </div>
+
+            <div class="game">
+                <div class="game-info">
+                    <h3>Game Title</h3>
+                    <p>Release Date: DD/MM/YYYY</p>
+                    <p>[Summary] Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div class="game-score">
+                    <span>5</span>
+                </div>
+            </div>
+
+            <div class="game">
+                <div class="game-info">
+                    <h3>Game Title</h3>
+                    <p>Release Date: DD/MM/YYYY</p>
+                    <p>[Summary] Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div class="game-score">
+                    <span>2</span>
+                </div>
+            </div> -->
+        </main>
+    </div>
+</body>
+</html>
