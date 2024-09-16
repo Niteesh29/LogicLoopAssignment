@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +8,6 @@ export class DataService {
 
   constructor(private http : HttpClient){}
   getData() {
-     return this.http.get('https://spa.api.logicloop.io/api/games').pipe(
-      delay(2000)
-    )
+     return this.http.get('https://spa.api.logicloop.io/api/games')
   }
 }
