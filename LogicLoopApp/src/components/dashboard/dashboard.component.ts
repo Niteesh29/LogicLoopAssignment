@@ -51,6 +51,7 @@ export class DashboardComponent implements OnInit {
       
     if (!searchName) {
       this.filteredData = this.originalData;
+      console.log(this.filteredData)
       return;
     }
 
@@ -61,7 +62,7 @@ export class DashboardComponent implements OnInit {
   }
 
   filterByScore(): void {
-    this.filteredData = this.data?.data.filter(
+    this.filteredData = this.originalData.filter(
       (item: any) => item?.attributes.rating == this.searchScore
     );
   }
